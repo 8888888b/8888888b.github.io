@@ -7,9 +7,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: black;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         header {
             background-color: #333;
@@ -40,7 +41,7 @@
         }
         @keyframes float {
             from {
-                transform: translate(0, 100vh);
+                transform: translate(100vw, 0);
             }
             to {
                 transform: translate(-100vw, 0);
@@ -78,7 +79,7 @@
             const codeElement = document.createElement('div');
             codeElement.className = 'code';
             codeElement.innerHTML = snippet;
-            codeElement.style.right = Math.random() * 100 + 'vw';
+            codeElement.style.left = '100vw';
             codeElement.style.top = Math.random() * 100 + 'vh';
             document.getElementById('codeBg').appendChild(codeElement);
         }
