@@ -8,20 +8,20 @@
         body {
             font-family: Arial, sans-serif;
             background-color: black;
-            color: black; /* 所有文字（除了代码）调成黑色 */
+            color: white; /* 所有文字（除了代码）调成白色 */
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
         header {
             background-color: #333;
-            color: black; /* 标题文字调成黑色 */
+            color: white; /* 标题文字调成白色 */
             padding: 10px 0;
             text-align: center;
         }
         .content {
             padding: 20px;
-            color: black; /* 内容文字调成黑色 */
+            color: white; /* 内容文字调成白色 */
         }
         .code-bg {
             position: fixed;
@@ -39,7 +39,7 @@
             font-size: 14px;
             position: absolute;
             white-space: nowrap;
-            animation: float 6s linear infinite;
+            animation: float 10s linear infinite;
         }
         @keyframes float {
             from {
@@ -91,7 +91,7 @@
         setInterval(() => {
             const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
             createCodeElement(randomLanguage, codeSnippets[randomLanguage]);
-        }, 1000);
+        }, 1500 + Math.random() * 3500);
     </script>
 </body>
 </html>
