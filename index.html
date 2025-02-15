@@ -1,43 +1,95 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8888888b的科幻主页</title>
+    <title>8888888b的个人主页</title>
     <style>
         body {
-            background-color: #0b0c10;
-            color: #c5c6c7;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
         }
-        h1 {
-            color: #66fcf1;
-            margin-top: 20%;
-        }
-        .button {
-            background-color: #1f2833;
-            border: none;
-            color: #66fcf1;
-            padding: 15px 32px;
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 20px 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
         }
-        .button:hover {
-            background-color: #66fcf1;
-            color: #0b0c10;
+        .content {
+            padding: 20px;
+        }
+        .code-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            font-family: 'Consolas', monospace;
+            opacity: 0.1;
+        }
+        .code {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            position: absolute;
+            white-space: nowrap;
+            animation: float 10s linear infinite;
+        }
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+            }
+            to {
+                transform: translateY(-100vh);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>欢迎来到8888888b的科幻主页！</h1>
-    <a href="https://github.com/8888888b/24-point" class="button">进入24点计算程序</a>
+    <header>
+        <h1>8888888b的个人主页</h1>
+    </header>
+    <div class="content">
+        <h2>我的24点计算程序</h2>
+        <p>欢迎来到我的个人主页！我是8888888b，这是我的24点计算程序。详细信息将在此展示。</p>
+    </div>
+    <div class="code-bg" id="codeBg"></div>
+    <script>
+        const languages = [
+            'html',
+            'python',
+            'c++',
+            'C',
+            'C#',
+            'Java'
+        ];
+        const codeSnippets = {
+            'html': '&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;script&gt;alert("Hello World!");&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;',
+            'python': 'print("Hello World!")',
+            'c++': '#include &lt;iostream&gt;\nint main() {\n  std::cout &lt;&lt; "Hello World!";\n  return 0;\n}',
+            'C': '#include &lt;stdio.h&gt;\nint main() {\n  printf("Hello World!\\n");\n  return 0;\n}',
+            'C#': 'using System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World!");\n  }\n}',
+            'Java': 'public class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello World!");\n  }\n}'
+        };
+        function createCodeElement(language, snippet) {
+            const codeElement = document.createElement('div');
+            codeElement.className = 'code';
+            codeElement.innerHTML = snippet;
+            codeElement.style.left = Math.random() * 100 + 'vw';
+            codeElement.style.animationDuration = (10 + Math.random() * 10) + 's';
+            document.getElementById('codeBg').appendChild(codeElement);
+        }
+        languages.forEach(language => {
+            createCodeElement(language, codeSnippets[language]);
+        });
+        setInterval(() => {
+            const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
+            createCodeElement(randomLanguage, codeSnippets[randomLanguage]);
+        }, 3000);
+    </script>
 </body>
 </html>
