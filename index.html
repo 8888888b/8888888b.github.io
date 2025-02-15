@@ -77,17 +77,33 @@
             'C#': 'using System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World!");\n  }\n}',
             'Java': 'public class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello World!");\n  }\n}'
         };
+
+        let usedPositions = [];
+
         function createCodeElement(language, snippet) {
             const codeElement = document.createElement('div');
             codeElement.className = 'code';
             codeElement.innerHTML = snippet;
+
+            let topPosition;
+            do {
+                topPosition = Math.random() * 100 + 'vh';
+            } while (usedPositions.includes(topPosition));
+            usedPositions.push(topPosition);
+
+            if (usedPositions.length > 10) { // keep track of last 10 positions
+                usedPositions.shift();
+            }
+
             codeElement.style.left = '100vw';
-            codeElement.style.top = Math.random() * 100 + 'vh';
+            codeElement.style.top = topPosition;
             document.getElementById('codeBg').appendChild(codeElement);
         }
+
         languages.forEach(language => {
             createCodeElement(language, codeSnippets[language]);
         });
+
         setInterval(() => {
             const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
             createCodeElement(randomLanguage, codeSnippets[randomLanguage]);
