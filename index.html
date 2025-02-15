@@ -8,18 +8,20 @@
         body {
             font-family: Arial, sans-serif;
             background-color: black;
+            color: black; /* 所有文字（除了代码）调成黑色 */
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
         header {
             background-color: #333;
-            color: white;
+            color: black; /* 标题文字调成黑色 */
             padding: 10px 0;
             text-align: center;
         }
         .content {
             padding: 20px;
+            color: black; /* 内容文字调成黑色 */
         }
         .code-bg {
             position: fixed;
@@ -37,7 +39,7 @@
             font-size: 14px;
             position: absolute;
             white-space: nowrap;
-            animation: float 2s linear infinite;
+            animation: float 6s linear infinite;
         }
         @keyframes float {
             from {
