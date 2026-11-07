@@ -1,113 +1,350 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8888888b的个人主页</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white; /* 所有文字（除了代码）调成白色 */
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        header {
-            background-color: #333;
-            color: white; /* 标题文字调成白色 */
-            padding: 10px 0;
-            text-align: center;
-        }
-        .content {
-            padding: 20px;
-            color: white; /* 内容文字调成白色 */
-        }
-        .code-bg {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            z-index: 9999;
-            pointer-events: none;
-            font-family: 'Consolas', monospace;
-            overflow: hidden;
-        }
-        .code {
-            color: yellow;
-            font-size: 14px;
-            position: absolute;
-            white-space: nowrap;
-            animation: float 10s linear infinite;
-        }
-        @keyframes float {
-            from {
-                transform: translate(100vw, 0);
-            }
-            to {
-                transform: translate(-100vw, 0);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>8888888b · 写代码，也写点小东西</title>
+  <meta name="description" content="8888888b 的个人主页：24 点求解器、Markdown 工具、密码模块，以及一些还没写完的想法。" />
+  <meta name="author" content="8888888b" />
+  <meta name="theme-color" content="#08090a" />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="8888888b · 写代码，也写点小东西" />
+  <meta property="og:description" content="24 点求解器、Markdown 工具、密码模块，以及一个能当场算给你看的 24 点。" />
+  <meta property="og:url" content="https://8888888b.github.io/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2308090a'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='30' font-weight='700' fill='%23cdf564' text-anchor='middle'%3E8%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <h1>8888888b的个人主页</h1>
-    </header>
-    <div class="content">
-        <h2>我的24点计算程序</h2>
-        <p>欢迎来到我的个人主页！我是8888888b，这是我的<a href="https://github.com/8888888b/24-point">24点计算程序</a>。详细信息将在此展示。</p>
+  <a class="skip" href="#work">跳到作品</a>
+
+  <!-- ============ 导航 ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a class="brand" href="#home" aria-label="回到顶部">
+        <span class="brand__mark">8</span>
+        <span class="brand__text">8888888b</span>
+      </a>
+
+      <nav class="nav__links" aria-label="主导航">
+        <a class="nav__link" href="#work" data-link>作品</a>
+        <a class="nav__link" href="#play" data-link>24 点</a>
+        <a class="nav__link" href="#about" data-link>关于</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="切换到浅色模式">
+          <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2v2.4M12 19.6v2.4M2 12h2.4M19.6 12h2.4M5 5l1.7 1.7M17.3 17.3l1.7 1.7M19 5l-1.7 1.7M6.7 17.3L5 19" />
+          </svg>
+          <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5 6.8 6.8 0 0 0 20.5 14.2Z" />
+          </svg>
+        </button>
+        <a class="btn btn--ghost btn--sm" href="https://github.com/8888888b" target="_blank" rel="noopener" aria-label="在 GitHub 上打开 8888888b 的主页">
+          <svg class="icon icon--github" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
     </div>
-    <div class="code-bg" id="codeBg"></div>
-    <script>
-        const languages = [
-            'html',
-            'python',
-            'c++',
-            'C',
-            'C#',
-            'Java'
-        ];
-        const codeSnippets = {
-            'html': '&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;script&gt;alert("Hello World!");&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;',
-            'python': 'print("Hello World!")',
-            'c++': '#include &lt;iostream&gt;\nint main() {\n  std::cout &lt;&lt; "Hello World!";\n  return 0;\n}',
-            'C': '#include &lt;stdio.h&gt;\nint main() {\n  printf("Hello World!\\n");\n  return 0;\n}',
-            'C#': 'using System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World!");\n  }\n}',
-            'Java': 'public class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello World!");\n  }\n}'
-        };
+  </header>
 
-        let usedPositions = [];
+  <main id="home">
+    <!-- ============ 首屏 ============ -->
+    <section class="hero">
+      <canvas class="hero__canvas" id="codeCanvas" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
 
-        function createCodeElement(language, snippet) {
-            const codeElement = document.createElement('div');
-            codeElement.className = 'code';
-            codeElement.innerHTML = snippet;
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>开源 · 自 2023</p>
 
-            let topPosition;
-            do {
-                topPosition = Math.random() * 100 + 'vh';
-            } while (usedPositions.includes(topPosition));
-            usedPositions.push(topPosition);
+          <h1 class="hero__title">
+            <span class="hero__title-sub">你好，我是</span>
+            <span class="hero__title-main">8888888b</span>
+          </h1>
 
-            if (usedPositions.length > 10) { // keep track of last 10 positions
-                usedPositions.shift();
-            }
+          <p class="hero__lead">
+            写算法，做小工具，顺便把页面改到满意为止。<br />
+            四个公开仓库，外加一个能当场算给你看的 24 点。
+          </p>
 
-            codeElement.style.left = '100vw';
-            codeElement.style.top = topPosition;
-            document.getElementById('codeBg').appendChild(codeElement);
-        }
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#work">看看作品</a>
+            <a class="btn btn--line" href="https://github.com/8888888b" target="_blank" rel="noopener">
+              在 GitHub 上找我
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </div>
 
-        languages.forEach(language => {
-            createCodeElement(language, codeSnippets[language]);
-        });
+          <dl class="stats">
+            <div class="stat">
+              <dt>公开仓库</dt>
+              <dd>04</dd>
+            </div>
+            <div class="stat">
+              <dt>起始</dt>
+              <dd>2023</dd>
+            </div>
+            <div class="stat">
+              <dt>主力</dt>
+              <dd>Python</dd>
+            </div>
+          </dl>
+        </div>
 
-        setInterval(() => {
-            const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
-            createCodeElement(randomLanguage, codeSnippets[randomLanguage]);
-        }, 3250 + Math.random() * 5000);
-    </script>
+        <aside class="terminal" aria-label="用终端形式做的自我介绍">
+          <div class="terminal__bar">
+            <span class="terminal__dots" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+            <span class="terminal__path">~/hello.py</span>
+          </div>
+
+          <div class="terminal__body" id="terminalBody">
+            <p class="ln"><span class="tok-cmd">$</span> python hello.py</p>
+            <p class="ln tok-note">正在读取公开资料…</p>
+            <p class="ln">├─ 仓库　　4 个</p>
+            <p class="ln">├─ 语言　　Python · C# · HTML</p>
+            <p class="ln">└─ 许可　　MIT</p>
+            <p class="ln ln--ok tok-ok">Hello, World! ✓</p>
+          </div>
+
+          <div class="terminal__foot">
+            <span class="chip">python 3</span>
+            <span class="chip">no framework</span>
+            <span class="chip">pages</span>
+          </div>
+        </aside>
+      </div>
+
+      <a class="scroll-hint" href="#work" aria-label="向下浏览">
+        <span class="scroll-hint__line" aria-hidden="true"></span>
+        <span class="scroll-hint__text">往下看</span>
+      </a>
+    </section>
+
+    <!-- ============ 作品 ============ -->
+    <section class="section" id="work">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__label">01 — 作品</p>
+          <h2 class="section__title">我做过的东西</h2>
+          <p class="section__desc">不多，四个都在解决一个具体的小问题。</p>
+        </header>
+
+        <div class="projects">
+          <article class="card card--wide" data-reveal>
+            <div class="card__top">
+              <span class="badge badge--accent">主打项目</span>
+              <span class="badge">Python</span>
+            </div>
+            <h3 class="card__title">24 点计算程序</h3>
+            <p class="card__desc">
+              给四个数字凑出 24。程序会把加减乘除和括号的所有组合走一遍，
+              找到可行解；找不到，就说明这组牌确实无解。
+            </p>
+            <p class="card__meta">递归 · 全排列 · 分数精确计算</p>
+            <a class="card__link" href="https://github.com/8888888b/24-point" target="_blank" rel="noopener">
+              查看仓库
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+            <div class="card__ghost" aria-hidden="true">24</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__top">
+              <span class="badge">C#</span>
+              <span class="badge badge--soft">MIT</span>
+            </div>
+            <h3 class="card__title">markdown-pad</h3>
+            <p class="card__desc">一个用 C# 写的 Markdown 小工具：左边写，右边就是排好的样子。</p>
+            <a class="card__link" href="https://github.com/8888888b/markdown-pad" target="_blank" rel="noopener">
+              查看仓库
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__top">
+              <span class="badge">Python</span>
+              <span class="badge badge--soft">MIT</span>
+            </div>
+            <h3 class="card__title">password-module</h3>
+            <p class="card__desc">生成密码的那一小段逻辑，单独拎出来，好让别的项目直接拿去用。</p>
+            <a class="card__link" href="https://github.com/8888888b/password-module" target="_blank" rel="noopener">
+              查看仓库
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__top">
+              <span class="badge">HTML</span>
+              <span class="badge badge--soft">Pages</span>
+            </div>
+            <h3 class="card__title">8888888b.github.io</h3>
+            <p class="card__desc">你正在看的这一页。没有框架，没有构建，手写 HTML、CSS 和 JS。</p>
+            <a class="card__link" href="https://github.com/8888888b/8888888b.github.io" target="_blank" rel="noopener">
+              查看源码
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 24 点现场 ============ -->
+    <section class="section section--play" id="play">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__label">02 — 现场</p>
+          <h2 class="section__title">凑一个 24 出来</h2>
+          <p class="section__desc">四个数字，加减乘除，每个只能用一次。写完按回车。</p>
+        </header>
+
+        <div class="game" data-reveal>
+          <div class="game__stage">
+            <div class="game__cards" id="cards" aria-label="本轮四个数字">
+              <span class="tile" data-slot="0">—</span>
+              <span class="tile" data-slot="1">—</span>
+              <span class="tile" data-slot="2">—</span>
+              <span class="tile" data-slot="3">—</span>
+            </div>
+
+            <form class="game__form" id="gameForm" autocomplete="off">
+              <label class="sr-only" for="expr">输入你的算式</label>
+              <input
+                class="game__input"
+                id="expr"
+                name="expr"
+                type="text"
+                inputmode="text"
+                placeholder="例如：(6 + 6) * (1 + 1)"
+                aria-describedby="gameMsg"
+              />
+              <button class="btn btn--primary" type="submit">检查</button>
+            </form>
+
+            <div class="game__row">
+              <button class="btn btn--ghost btn--sm" type="button" id="newRound">换一组</button>
+              <button class="btn btn--ghost btn--sm" type="button" id="showAnswer">看答案</button>
+              <span class="game__msg" id="gameMsg" role="status" aria-live="polite">
+                支持 + − × ÷ 和括号，也可以直接打 * / ÷。
+              </span>
+            </div>
+          </div>
+
+          <aside class="game__aside">
+            <p class="game__aside-title">记一下规则</p>
+            <ul class="rules">
+              <li>四个数字都要用上，且各用一次</li>
+              <li>中间结果可以是分数，最后必须是 24</li>
+              <li>除以 0 不算数</li>
+            </ul>
+            <p class="game__aside-note">
+              求解器在浏览器里跑，答案由你自己验证，我这边只负责算得准。
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 关于 ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__copy" data-reveal>
+          <p class="section__label">03 — 关于</p>
+          <h2 class="section__title">写东西的人</h2>
+          <p class="about__p">
+            2023 年 7 月注册了 GitHub，之后写的东西基本都留在这儿。
+            比起做一个大而全的项目，我更喜欢把一个小问题磨到底：24 点到底有多少种解法、
+            一个密码要多随机才算随机、Markdown 排出来能不能更好看一点。
+          </p>
+          <p class="about__p">
+            这个主页也一样。没有框架，没有构建工具，就是 HTML、CSS 和 JS，
+            每一行都知道自己在干什么。
+          </p>
+          <a class="btn btn--line" href="https://github.com/8888888b" target="_blank" rel="noopener">
+            去 GitHub 看看
+            <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8" />
+            </svg>
+          </a>
+        </div>
+
+        <dl class="facts" data-reveal>
+          <div class="fact">
+            <dt>第一次提交</dt>
+            <dd>2023.07</dd>
+          </div>
+          <div class="fact">
+            <dt>公开仓库</dt>
+            <dd>4</dd>
+          </div>
+          <div class="fact">
+            <dt>常用语言</dt>
+            <dd>Python / C#</dd>
+          </div>
+          <div class="fact">
+            <dt>开源许可</dt>
+            <dd>MIT</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ 联系 ============ -->
+    <section class="section section--contact" id="contact">
+      <div class="container contact" data-reveal>
+        <p class="contact__label">04 — 联系</p>
+        <h2 class="contact__title">想聊两句就直接说。</h2>
+        <p class="contact__desc">
+          新想法、发现了这个页面里的一个 bug、或者只是想问问 24 点怎么解，都可以直接找我。
+          GitHub 的 issue 是最快的方式。
+        </p>
+        <div class="contact__actions">
+          <a class="btn btn--primary btn--lg" href="https://github.com/8888888b" target="_blank" rel="noopener">
+            github.com/8888888b
+            <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8" />
+            </svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="https://github.com/8888888b/24-point/issues" target="_blank" rel="noopener">
+            提个 issue
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">© <span id="year">2026</span> 8888888b</p>
+      <p class="footer__meta">手写 HTML / CSS / JS · 托管在 GitHub Pages</p>
+      <a class="footer__link" href="https://github.com/8888888b/8888888b.github.io" target="_blank" rel="noopener">
+        源码
+        <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 17 7M9 7h8v8" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
